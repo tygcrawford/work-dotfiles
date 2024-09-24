@@ -1,7 +1,7 @@
 set nocompatable
 
 set termguicolors
-" colorscheme cattpuccin_mocha
+colorscheme cattpuccin_mocha
 
 syntax on
 

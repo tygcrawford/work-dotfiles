@@ -3,6 +3,7 @@
 # get default profile
 profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
 profile=${profile:1:-1} # remove leading and trailing single quotes
+full_profile=org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${profile}/
 
 # install fira code
 fonts_dir="${HOME}/.local/share/fonts"
@@ -21,84 +22,18 @@ unzip -o -q -d ${fonts_dir} ${zip_path}
 rm ${zip_path}
 fc-cache -f
 
+gsettings set ${full_profile} font "Fira Code 10"
+
 # set profile values
-gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" default-size-columns 150
 
-palette "['#454658','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#bbc1db','#585a6e','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#454658']"
-
-visible-name "Catppuccin Mocha"
-background-color "#1e1d2c"
-foreground-color "#ced5f1"
-highlight-colors-set "True"
-highlight-background-color "#f1e0dc"
-highlight-foreground-color "#454658"
-cursor-colors-set "True"
-cursor-background-color "#f1e0dc"
-cursor-foreground-color "#1e1d2c"
-use-theme-colors "#False"
-
-#palette key
-#
-#
-#
-#def gsettings_set(key: str, value: Union[dict, list, str, bool], path: str = "") -> None:
-#    if type(value) in [dict, list]:
-#        value = json.dumps(value).replace('"', "'")
-#    elif type(value) == str:
-#        value = f"'{value}'"
-#    elif type(value) == bool:
-#        value = str(value).lower()
-#
-#    if path:
-#        print(f"Setting {path}/ {key} to {value}")
-#        run(["gsettings", "set", f"{gsettings_path_base}:{path}/", f"{key}", f"{value}"])
-#    else:
-#        print(f"Setting {key} to {value}")
-#        run(["gsettings", "set", f"{gsettings_schema}", f"{key}", f"{value}"])
-#
-#
-## handle the case where there are no profiles
-#try:
-#    profiles = gsettings_get("list")
-#except:
-#    profiles = []
-#
-#for flavour, colours in palette.items():
-#    uuid = uuids[flavour]
-#    gsettings_set("visible-name", f"Catppuccin {flavour.capitalize()}", f"{uuid}")
-#    gsettings_set("background-color", colours["base"]["hex"], f"{uuid}")
-#    gsettings_set("foreground-color", colours["text"]["hex"], f"{uuid}")
-#    gsettings_set("highlight-colors-set", True, f"{uuid}")
-#    gsettings_set("highlight-background-color", colours["rosewater"]["hex"], f"{uuid}")
-#    gsettings_set("highlight-foreground-color", colours["surface2"]["hex"], f"{uuid}")
-#    gsettings_set("cursor-colors-set", True, f"{uuid}")
-#    gsettings_set("cursor-background-color", colours["rosewater"]["hex"], f"{uuid}")
-#    gsettings_set("cursor-foreground-color", colours["base"]["hex"], f"{uuid}")
-#
-#    isLatte = flavour == "latte"
-#    colors = [
-#        isLatte and colours["subtext1"] or colours["surface1"],
-#        colours["red"],
-#        colours["green"],
-#        colours["yellow"],
-#        colours["blue"],
-#        colours["pink"],
-#        colours["teal"],
-#        isLatte and colours["surface2"] or colours["subtext1"],
-#        isLatte and colours["subtext0"] or colours["surface2"],
-#        colours["red"],
-#        colours["green"],
-#        colours["yellow"],
-#        colours["blue"],
-#        colours["pink"],
-#        colours["teal"],
-#        isLatte and colours["surface1"] or colours["subtext0"],
-#    ]
-#    gsettings_set("use-theme-colors", False, f"{uuid}")
-#    gsettings_set("palette", [color["hex"] for color in colors], f"{uuid}")
-#
-#    if uuid not in profiles:
-#        profiles.append(uuid)
-#
-#gsettings_set("list", profiles)
-#print("All profiles installed.")
+gsettings set ${full_profile} visible-name "Catppuccin Mocha"
+gsettings set ${full_profile} palette ['#454658','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#bbc1db','#585a6e','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#454658']
+gsettings set ${full_profile} background-color "#1e1d2c"
+gsettings set ${full_profile} foreground-color "#ced5f1"
+gsettings set ${full_profile} highlight-colors-set "true"
+gsettings set ${full_profile} highlight-background-color "#f1e0dc"
+gsettings set ${full_profile} highlight-foreground-color "#454658"
+gsettings set ${full_profile} cursor-colors-set "true"
+gsettings set ${full_profile} cursor-background-color "#f1e0dc"
+gsettings set ${full_profile} cursor-foreground-color "#1e1d2c"
+gsettings set ${full_profile} use-theme-colors "false"

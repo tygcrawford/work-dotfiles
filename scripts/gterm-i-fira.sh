@@ -1,7 +1,7 @@
 #!/bin/bash
 
 project_path=$(cd $(dirname "$0") && git rev-parse --show-toplevel)
-source $project_path/src/utils.sh
+source ${project_path}/scripts/utils.sh
 
 # ensure fonts folder
 [ ! -d "${fonts_path}" ] && mkdir -p "${fonts_path}"

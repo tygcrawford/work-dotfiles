@@ -7,9 +7,11 @@ source $project_path/src/utils.sh
 [ ! -d "${fonts_path}" ] && mkdir -p "${fonts_path}"
 
 # unzip fonts into folder
+tempdir=$(mktemp -d)
+trap 'rm -rf "$tempdir"' SIGTERM SIGINT EXIT
 zip=${project_path}/assets/FiraCode.zip
-unzip -o -q -d ${fonts_path} ${zip}
-$(cd ${fonts_path} && rm README.md LICENSE)
+unzip -o -q -d ${tempdir} ${zip}
+mv ${tempdir}/FiraCodeNerdFontMono* ${fonts_path}
 
 # add fonts
 fc-cache -f

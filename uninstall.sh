@@ -14,7 +14,7 @@ rm ${vim_colors_path}/catppuccin_mocha.vim
 rm ${tmux_conf_path}
 
 # uninstall fira code font
-rm FiraCodeNerdFont*
+rm ${fonts_path}/FiraCodeNerdFont*
 fc-cache -f
 
 # remove lines from .bashrc
@@ -22,5 +22,19 @@ lines=$(cat ${bashrc_path} | grep "work_dotfiles")
 varline=$(echo $lines | head --lines 1)
 sourceline=$(echo $lines | tail -n 1)
 
-sed -i ${varline} ${bashrc_path}
-sed -i ${sourceline} ${bashrc_path}
+sed -i.bak "/^${varline}/d" ${bashrc_path}
+sed -i.bak "/^${sourceline}/d" ${bashrc_path}
+
+# reset all gterm settings
+gterm_reset font
+gterm_reset encoding
+gterm_reset visible-name
+gterm_reset palette
+gterm_reset background-color
+gterm_reset foreground-color
+gterm_reset highlight-colors-set
+gterm_reset highlight-background-color
+gterm_reset highlight-foreground-color
+gterm_reset cursor-colors-set
+gterm_reset cursor-background-color
+gterm_reset use-theme-colors

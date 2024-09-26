@@ -34,4 +34,3 @@ Place this file in your home directory for it to take effect.
 
 A standard .tmux.conf file that makes usability changes as well as adding a readable statusline.
 Place this file in your home directory for it to take effect.
-

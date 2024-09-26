@@ -19,3 +19,8 @@ function gterm_set() {
   gsettings set ${full_profile} ${key} ${value}
 }
 
+function gterm_reset() {
+  key=$1
+  gsettings reset ${full_profile} ${key}
+}
+

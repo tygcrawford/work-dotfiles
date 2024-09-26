@@ -17,4 +17,4 @@ fc-cache -f
 
 # set font in terminal
 gterm_set font "FiraCode Nerd Font Mono 10"
-gterm_set encoding "en_US.UTF-8"
+gterm_set encoding "UTF-8"

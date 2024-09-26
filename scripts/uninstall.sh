@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# import utils
-project_path=$(cd $(dirname "$0") && git rev-parse --show-toplevel)
-source ${project_path}/scripts/utils.sh
+source $(dirname "$0")/utils.sh
 
 # uninstall .vimrc
 rm ${vimrc_path}
@@ -24,17 +22,3 @@ sourceline=$(echo $lines | tail -n 1)
 
 sed -i.bak "/^${varline}/d" ${bashrc_path}
 sed -i.bak "/^${sourceline}/d" ${bashrc_path}
-
-# reset all gterm settings
-gterm_reset font
-gterm_reset encoding
-gterm_reset visible-name
-gterm_reset palette
-gterm_reset background-color
-gterm_reset foreground-color
-gterm_reset highlight-colors-set
-gterm_reset highlight-background-color
-gterm_reset highlight-foreground-color
-gterm_reset cursor-colors-set
-gterm_reset cursor-background-color
-gterm_reset use-theme-colors

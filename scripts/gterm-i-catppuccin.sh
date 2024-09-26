@@ -1,11 +1,8 @@
 #!/bin/bash
 
-project_path=$(cd $(dirname "$0") && git rev-parse --show-toplevel)
-source ${project_path}/scripts/utils.sh
+source $(dirname "$0")/utils.sh
 
 # set profile values
-gterm_set visible-name "Catppuccin Mocha"
-
 palette="['#454658','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#bbc1db','#585a6e','#e490a7','#b2e1a7','#f5e2b4','#91b2f4','#ecc3e4','#a5dfd5','#454658']"
 gterm_set palette ${palette}
 

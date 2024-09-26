@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# import utils
-project_path=$(cd $(dirname "$0") && git rev-parse --show-toplevel)
-source ${project_path}/scripts/utils.sh
+source $(dirname "$0")/utils.sh
 
 # install .vimrc
 cp ${project_path}/.vimrc ${vimrc_path}

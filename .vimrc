@@ -5,6 +5,10 @@ colorscheme cattpuccin_mocha
 
 syntax on
 
+" change cursor for insert mode
+let &t_SI="\e[6 q"
+let &t_EI="\e[2 q"
+
 set rnu
 set nu
 
